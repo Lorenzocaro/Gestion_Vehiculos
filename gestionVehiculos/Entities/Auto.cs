@@ -9,6 +9,7 @@ public class Auto : Vehiculo
         Console.WriteLine("El auto está acelerando.");
         float aceleracion = velocidadMaxima / 2;
         velocidadActual += aceleracion;
+        Console.WriteLine("");
         return velocidadActual;
     }
 
@@ -17,6 +18,7 @@ public class Auto : Vehiculo
         Console.WriteLine("El auto está frenando.");
         float frenar = velocidadActual / 2;
         velocidadActual -= frenar;
+        Console.WriteLine("");
         return velocidadActual;
     }
 

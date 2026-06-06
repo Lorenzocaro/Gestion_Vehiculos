@@ -24,6 +24,202 @@ class Program
         • Desde el programa principal se deben ejecutar acciones sobre distintos vehículos 
         y mostrar los resultados en consola.*/
 
+        Console.WriteLine("--- Bienvenido ---");
+        Console.WriteLine("");
+        int op = 0;
 
+        do
+        {
+            Console.WriteLine("Selecciona una opcion del menu:");
+            Console.WriteLine("");    
+            Console.WriteLine("1. Registrar vehiculo.");    
+            Console.WriteLine("2. Mostrar todos los vehiculos resgistrados.");    
+            Console.WriteLine("3. Simular acelerado.");    
+            Console.WriteLine("4. Simular frenado.");    
+            Console.WriteLine("5. Salir.");    
+            op = int.Parse(Console.ReadLine());
+            Console.WriteLine("");
+
+            switch (op)
+            {
+                case 1:
+                    RegistrarVehiculo();
+                    break;
+
+                case 2:
+                    VerRegistrados();
+                    break;
+
+                case 3:
+                    break;
+                case 4:
+                    break;
+
+                case 5:
+                    Console.WriteLine("Hasta luego...");
+                    break;
+
+                default:
+                    Console.WriteLine("Ingresa una opcion valida.");
+                    Console.WriteLine("");
+                    break;
+            }
+        }
+        while(op != 5);
     }
+    static void RegistrarVehiculo()
+    {
+        int op = 0;
+
+        do
+        {
+            Console.WriteLine("Ingresa el tipo de vehiculo que quieres registrar:");
+            Console.WriteLine("");
+            Console.WriteLine("1. Auto.");
+            Console.WriteLine("2. Moto.");
+            Console.WriteLine("3. Camioneta.");
+            Console.WriteLine("4. Volver al menu principal.");
+            op = int.Parse(Console.ReadLine());
+            Console.WriteLine("");
+            
+            switch (op)
+            {
+                case 1:
+                    RegistrarAuto();
+                    break;
+
+                case 2:
+                    RegistrarMoto();
+                    break;
+
+                case 3:
+                    RegistrarCamioneta();
+                    break;
+                case 4:
+                    Console.WriteLine("Hasta luego...");
+                    break;
+                    
+                default:
+                    Console.WriteLine("Ingresa una opcion valida.");
+                    Console.WriteLine("");
+                    break;
+            }
+        }
+        while(op != 4);
+        
+    }
+    static void RegistrarAuto()
+    {
+        Console.WriteLine("Ingresa la marca del auto:");
+        Console.WriteLine("");
+        string marca = Console.ReadLine();
+
+        Console.WriteLine("Ingresa el modelo del auto:");
+        Console.WriteLine("");
+        string modelo = Console.ReadLine();
+        
+        Console.WriteLine("Ingresa la velocidad maxima del auto:");
+        Console.WriteLine("");
+        float velocidadMaxima = float.Parse(Console.ReadLine());
+
+        Auto auto = new Auto(marca, modelo, velocidadMaxima, 0);
+        vehiculos.Add(auto);
+        autos.Add(auto);
+    }
+    static void RegistrarMoto()
+    {
+        Console.WriteLine("Ingresa la marca de la moto:");
+        Console.WriteLine("");
+        string marca = Console.ReadLine();
+
+        Console.WriteLine("Ingresa el modelo de la moto:");
+        Console.WriteLine("");
+        string modelo = Console.ReadLine();
+        
+        Console.WriteLine("Ingresa la velocidad maxima de la moto:");
+        Console.WriteLine("");
+        float velocidadMaxima = float.Parse(Console.ReadLine());
+
+        Moto moto = new Moto(marca, modelo, velocidadMaxima, 0);
+        vehiculos.Add(moto);
+        motos.Add(moto);
+    }
+    static void RegistrarCamioneta()
+    {
+        Console.WriteLine("Ingresa la marca de la camioneta:");
+        Console.WriteLine("");
+        string marca = Console.ReadLine();
+
+        Console.WriteLine("Ingresa el modelo de la camioneta:");
+        Console.WriteLine("");
+        string modelo = Console.ReadLine();
+        
+        Console.WriteLine("Ingresa la velocidad maxima de la camioneta:");
+        Console.WriteLine("");
+        float velocidadMaxima = float.Parse(Console.ReadLine());
+
+        Camioneta camioneta = new Camioneta(marca, modelo, velocidadMaxima, 0);
+        vehiculos.Add(camioneta);
+        camionetas.Add(camioneta);
+    }
+    static void VerRegistrados()
+    {
+        Console.WriteLine("--- Autos ---");
+        Console.WriteLine("");
+        int idAuto = 1;
+
+        if(autos.Count == 0)
+        {
+            Console.WriteLine("Aun no hay autos registrados.");
+            Console.WriteLine("");
+        }
+        else
+        {
+            foreach(Auto a in autos)
+            {
+                Console.WriteLine($"{idAuto}. Marca: {a.Marca} --- Modelo: {a.Modelo} --- Velocidad maxima: {a.VelocidadMaxima}.");
+                Console.WriteLine("");
+                idAuto ++;
+            }
+        }    
+
+        Console.WriteLine("--- Motos ---");
+        Console.WriteLine("");
+        int idMoto = 1;
+
+        if(motos.Count == 0)
+        {
+            Console.WriteLine("Aun no hay motos registrados.");
+            Console.WriteLine("");
+        }
+        else
+        {
+            foreach(Moto m in motos)
+            {
+                Console.WriteLine($"{idMoto}. Marca: {m.Marca} --- Modelo: {m.Modelo} --- Velocidad maxima: {m.VelocidadMaxima}.");
+                Console.WriteLine("");
+                idMoto ++;
+            }
+        }
+        
+
+        Console.WriteLine("--- Camionetas ---");
+        Console.WriteLine("");
+        int idCamioneta = 1;
+
+        if(camionetas.Count == 0)
+        {
+            Console.WriteLine("Aun no hay camionetas registrados.");
+            Console.WriteLine("");
+            idCamioneta ++;
+        }
+        else
+        {
+            foreach(Camioneta c in camionetas)
+            {
+                Console.WriteLine($"{idCamioneta}. Marca: {c.Marca} --- Modelo: {c.Modelo} --- Velocidad maxima: {c.VelocidadMaxima}.");
+                Console.WriteLine("");
+            } 
+        }
+    }    
 }

@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "eVVZxx6ERFM=",
+  "dgSpecHash": "W1PPOcO3Bz0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\fiore\\OneDrive\\Escritorio\\Gestion_Vehiculos\\gestionVehiculos\\gestionVehiculos.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\facu\\Desktop\\Software\\Programacion II\\Practico_Pesa, Caro\\Gestion_Vehiculos\\gestionVehiculos\\gestionVehiculos.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\facu\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.14\\microsoft.netcore.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\facu\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.14\\microsoft.windowsdesktop.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\facu\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.14\\microsoft.aspnetcore.app.ref.9.0.14.nupkg.sha512",
+    "C:\\Users\\facu\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.14\\microsoft.netcore.app.host.win-x64.9.0.14.nupkg.sha512"
+  ],
   "logs": []
 }
