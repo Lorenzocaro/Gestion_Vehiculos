@@ -6,7 +6,6 @@ public class Moto : Vehiculo
 
     public override float Acelerar(float velocidadMaxima, float velocidadActual)
     {
-        Console.WriteLine("La moto está acelerando.");
         float aceleracion = velocidadMaxima / 2;
         velocidadActual += aceleracion;
         Console.WriteLine("");
@@ -15,7 +14,6 @@ public class Moto : Vehiculo
 
     public override float Frenar(float velocidadActual, float velocidadMaxima)
     {
-        Console.WriteLine("La moto está frenando.");
         float frenar = velocidadActual / 2;
         velocidadActual -= frenar;
         Console.WriteLine("");

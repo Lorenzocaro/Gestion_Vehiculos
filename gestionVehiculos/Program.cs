@@ -31,12 +31,12 @@ class Program
         do
         {
             Console.WriteLine("Selecciona una opcion del menu:");
-            Console.WriteLine("");    
-            Console.WriteLine("1. Registrar vehiculo.");    
-            Console.WriteLine("2. Mostrar todos los vehiculos resgistrados.");    
-            Console.WriteLine("3. Simular acelerado.");    
-            Console.WriteLine("4. Simular frenado.");    
-            Console.WriteLine("5. Salir.");    
+            Console.WriteLine("");
+            Console.WriteLine("1. Registrar vehiculo.");
+            Console.WriteLine("2. Mostrar todos los vehiculos resgistrados.");
+            Console.WriteLine("3. Simular acelerado.");
+            Console.WriteLine("4. Simular frenado.");
+            Console.WriteLine("5. Salir.");
             op = int.Parse(Console.ReadLine());
             Console.WriteLine("");
 
@@ -51,8 +51,10 @@ class Program
                     break;
 
                 case 3:
+                    SimularAceleracion();
                     break;
                 case 4:
+                    SimularFrenado();
                     break;
 
                 case 5:
@@ -65,7 +67,7 @@ class Program
                     break;
             }
         }
-        while(op != 5);
+        while (op != 5);
     }
     static void RegistrarVehiculo()
     {
@@ -81,7 +83,7 @@ class Program
             Console.WriteLine("4. Volver al menu principal.");
             op = int.Parse(Console.ReadLine());
             Console.WriteLine("");
-            
+
             switch (op)
             {
                 case 1:
@@ -98,15 +100,15 @@ class Program
                 case 4:
                     Console.WriteLine("Hasta luego...");
                     break;
-                    
+
                 default:
                     Console.WriteLine("Ingresa una opcion valida.");
                     Console.WriteLine("");
                     break;
             }
         }
-        while(op != 4);
-        
+        while (op != 4);
+
     }
     static void RegistrarAuto()
     {
@@ -117,7 +119,7 @@ class Program
         Console.WriteLine("Ingresa el modelo del auto:");
         Console.WriteLine("");
         string modelo = Console.ReadLine();
-        
+
         Console.WriteLine("Ingresa la velocidad maxima del auto:");
         Console.WriteLine("");
         float velocidadMaxima = float.Parse(Console.ReadLine());
@@ -135,7 +137,7 @@ class Program
         Console.WriteLine("Ingresa el modelo de la moto:");
         Console.WriteLine("");
         string modelo = Console.ReadLine();
-        
+
         Console.WriteLine("Ingresa la velocidad maxima de la moto:");
         Console.WriteLine("");
         float velocidadMaxima = float.Parse(Console.ReadLine());
@@ -153,7 +155,7 @@ class Program
         Console.WriteLine("Ingresa el modelo de la camioneta:");
         Console.WriteLine("");
         string modelo = Console.ReadLine();
-        
+
         Console.WriteLine("Ingresa la velocidad maxima de la camioneta:");
         Console.WriteLine("");
         float velocidadMaxima = float.Parse(Console.ReadLine());
@@ -168,58 +170,132 @@ class Program
         Console.WriteLine("");
         int idAuto = 1;
 
-        if(autos.Count == 0)
+        if (autos.Count == 0)
         {
             Console.WriteLine("Aun no hay autos registrados.");
             Console.WriteLine("");
         }
         else
         {
-            foreach(Auto a in autos)
+            foreach (Auto a in autos)
             {
                 Console.WriteLine($"{idAuto}. Marca: {a.Marca} --- Modelo: {a.Modelo} --- Velocidad maxima: {a.VelocidadMaxima}.");
                 Console.WriteLine("");
-                idAuto ++;
+                idAuto++;
             }
-        }    
+        }
 
         Console.WriteLine("--- Motos ---");
         Console.WriteLine("");
         int idMoto = 1;
 
-        if(motos.Count == 0)
+        if (motos.Count == 0)
         {
             Console.WriteLine("Aun no hay motos registrados.");
             Console.WriteLine("");
         }
         else
         {
-            foreach(Moto m in motos)
+            foreach (Moto m in motos)
             {
                 Console.WriteLine($"{idMoto}. Marca: {m.Marca} --- Modelo: {m.Modelo} --- Velocidad maxima: {m.VelocidadMaxima}.");
                 Console.WriteLine("");
-                idMoto ++;
+                idMoto++;
             }
         }
-        
+
 
         Console.WriteLine("--- Camionetas ---");
         Console.WriteLine("");
         int idCamioneta = 1;
 
-        if(camionetas.Count == 0)
+        if (camionetas.Count == 0)
         {
             Console.WriteLine("Aun no hay camionetas registrados.");
             Console.WriteLine("");
-            idCamioneta ++;
+            idCamioneta++;
         }
         else
         {
-            foreach(Camioneta c in camionetas)
+            foreach (Camioneta c in camionetas)
             {
                 Console.WriteLine($"{idCamioneta}. Marca: {c.Marca} --- Modelo: {c.Modelo} --- Velocidad maxima: {c.VelocidadMaxima}.");
                 Console.WriteLine("");
-            } 
+            }
         }
-    }    
+    }
+
+    static void SimularAceleracion()
+    {
+        Console.WriteLine("--- Vehiculos ---");
+        Console.WriteLine("");
+        int idVehiculo = 1;
+        int eleccionVehiculo;
+
+        if (vehiculos.Count == 0)
+        {
+            Console.WriteLine("Aun no hay vehiculos registrados.");
+            Console.WriteLine("");
+        }
+        else
+        {
+            foreach (Vehiculo v in vehiculos)
+            {
+                Console.WriteLine($"{idVehiculo}. Marca: {v.Marca} --- Modelo: {v.Modelo} --- Velocidad maxima: {v.VelocidadMaxima}.");
+                Console.WriteLine("");
+                idVehiculo++;
+            }
+            Console.WriteLine("Ingrese el numero del vehiculo que desea acelerar:");
+            eleccionVehiculo = int.Parse(Console.ReadLine());
+
+            if (eleccionVehiculo > vehiculos.Count)
+            {
+                Console.WriteLine("Ingresa un numero valido.");
+                Console.WriteLine("");
+            }
+            else
+            {
+                Vehiculo vehiculoSeleccionado = vehiculos[eleccionVehiculo - 1];
+                float velocidadActual = vehiculoSeleccionado.Acelerar(vehiculoSeleccionado.VelocidadMaxima, vehiculoSeleccionado.VelocidadActual);
+                Console.WriteLine("El vehiculo ha acelerado. Su velocidad actual es: " + velocidadActual);
+            }
+        }
+    }
+
+    static void SimularFrenado()
+    {
+        Console.WriteLine("--- Vehiculos ---");
+        Console.WriteLine("");
+        int idVehiculo = 1;
+        int eleccionVehiculo;
+
+        if (vehiculos.Count == 0)
+        {
+            Console.WriteLine("Aun no hay vehiculos registrados.");
+            Console.WriteLine("");
+        }
+        else
+        {
+            foreach (Vehiculo v in vehiculos)
+            {
+                Console.WriteLine($"{idVehiculo}. Marca: {v.Marca} --- Modelo: {v.Modelo} --- Velocidad maxima: {v.VelocidadMaxima}.");
+                Console.WriteLine("");
+                idVehiculo++;
+            }
+            Console.WriteLine("Ingrese el numero del vehiculo que desea frenar:");
+            eleccionVehiculo = int.Parse(Console.ReadLine());
+
+            if (eleccionVehiculo > vehiculos.Count)
+            {
+                Console.WriteLine("Ingresa un numero valido.");
+                Console.WriteLine("");
+            }
+            else
+            {
+                Vehiculo vehiculoSeleccionado = vehiculos[eleccionVehiculo - 1];
+                float velocidadActual = vehiculoSeleccionado.Frenar(vehiculoSeleccionado.VelocidadActual, vehiculoSeleccionado.VelocidadMaxima);
+                Console.WriteLine("El vehiculo ha frenado. Su velocidad actual es: " + velocidadActual);
+            }
+        }
+    }
 }
